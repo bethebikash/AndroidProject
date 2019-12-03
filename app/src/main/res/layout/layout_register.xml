@@ -17,7 +17,7 @@
         <TextView
             style="@style/headerTextPrimary"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:text="@string/register" />
+            android:text="REGISTER" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/parent"
@@ -49,6 +49,17 @@
                 style="@style/modifiedEditText"
                 android:hint="@string/login_email_hint"
                 android:inputType="textEmailAddress"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/signup_text_margin_top">
+
+            <EditText
+                style="@style/modifiedEditText"
+                android:hint="@string/login_username_hint"
+                android:inputType="textVisiblePassword|textNoSuggestions"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
