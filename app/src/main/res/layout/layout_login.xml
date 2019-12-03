@@ -21,12 +21,12 @@
             android:text="LOGIN" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputEmail"
+            android:id="@+id/textInputUsername"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin">
 
             <EditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/etUsername"
                 style="@style/modifiedEditText"
                 android:hint="@string/login_username_hint"
                 android:inputType="textVisiblePassword|textNoSuggestions"
@@ -39,7 +39,7 @@
             android:layout_marginTop="@dimen/loginViewsMargin">
 
             <EditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/etPassword"
                 style="@style/modifiedEditText"
                 android:hint="@string/login_password_hint"
                 android:inputType="textPassword"
@@ -50,12 +50,12 @@
             style="@style/viewParent"
             android:layout_gravity="end"
             android:layout_marginTop="10dp"
-            android:onClick="viewForgotPAssword"
             android:text="Forgot Password?"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/newsMoreTextSize" />
 
         <Button
+            android:id="@+id/btnLogin"
             style="@style/loginButton"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/loginViewsMargin"
@@ -69,7 +69,6 @@
             android:textAlignment="center"
             android:textColor="@color/primaryTextColor"
             android:textStyle="bold" />
-
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
