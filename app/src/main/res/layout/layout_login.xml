@@ -52,11 +52,11 @@
             android:layout_marginTop="10dp"
             android:text="Forgot Password?"
             android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/newsMoreTextSize" />
+            />
 
         <Button
             android:id="@+id/btnLogin"
-            style="@style/loginButton"
+            style="@style/primaryButton"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/loginViewsMargin"
             android:text="Login" />

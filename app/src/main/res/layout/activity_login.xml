@@ -19,12 +19,12 @@
                 <LinearLayout
                     style="@style/parent"
                     android:layout_weight="3"
-                    android:background="@drawable/login_shape_bk"
+                    android:background="@drawable/header_shape_bk"
                     android:orientation="vertical">
 
                     <ImageView
                         style="@style/parent"
-                        android:background="@drawable/ic_login_bk"
+                        android:background="@drawable/header_layer"
                         android:contentDescription="login background" />
 
                 </LinearLayout>
@@ -40,11 +40,12 @@
                 android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
-                <TextView
-                    style="@style/headerText"
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="40dp"
-                    android:text="@string/app_name" />
+                    android:src="@drawable/logo" />
 
                 <include layout="@layout/layout_login" />
 

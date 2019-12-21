@@ -75,7 +75,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            style="@style/loginButton"
+            style="@style/primaryButton"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/loginViewsMargin"
             android:text="Register" />

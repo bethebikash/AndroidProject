@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--dimes for design 3-->
+    <!--dimes for design-->
+    <dimen name="defaultTextSize">14sp</dimen>
     <dimen name="headerTextSize">34sp</dimen>
-    <dimen name="newsMoreTextSize">14sp</dimen>
+    <dimen name="normalTextSize">14sp</dimen>
+
     <dimen name="loginCardRadius">20dp</dimen>
     <dimen name="loginViewsMargin">20dp</dimen>
 

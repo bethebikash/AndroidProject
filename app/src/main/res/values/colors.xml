@@ -8,7 +8,7 @@
     <!--colors for modern ui-->
     <color name="whiteTextColor">#fff</color>
     <color name="primaryTextColor">#0BB30B</color>
-    <color name="loginBkColor">#eee</color>
+    <color name="bkColor">#eee</color>
 
     <!--colors for card-->
     <color name="whiteCardColor">#fff</color>
