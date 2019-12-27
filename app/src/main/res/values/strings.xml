@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">eRepair</string>
 
+<!--    Navigation    -->
+    <string name="menu_home">Home</string>
+    <string name="menu_my_booking">My Bookings</string>
+    <string name="menu_info">Info</string>
+    <string name="menu_profile">Profile</string>
+
     <string name="login_email_hint">Email</string>
     <string name="login_username_hint">Username</string>
     <string name="login_password_hint">Password</string>
     <string name="signup_login_hint">Already have an account? Sign In</string>
     <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
     <string name="version">Version 1.0.0</string>
+
+
 </resources>
