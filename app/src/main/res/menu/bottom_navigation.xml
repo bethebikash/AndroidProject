@@ -6,7 +6,7 @@
         android:title="@string/menu_home" />
 
     <item
-        android:id="@+id/navAdd"
+        android:id="@+id/navMyBooking"
         android:icon="@drawable/ic_my_booking_24dp"
         android:title="@string/menu_my_booking" />
 
@@ -16,7 +16,7 @@
         android:title="@string/menu_info" />
 
     <item
-        android:id="@+id/nav"
+        android:id="@+id/navProfile"
         android:icon="@drawable/ic_profile_24dp"
         android:title="@string/menu_profile" />
 
