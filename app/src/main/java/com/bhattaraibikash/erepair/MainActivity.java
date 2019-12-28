@@ -1,10 +1,13 @@
 package com.bhattaraibikash.erepair;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -17,19 +20,21 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView navigation;
-//    private ActionBar toolbar;
+    private Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        toolbar = getSupportActionBar();
-
         navigation = findViewById(R.id.bottomNavigation);
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
 
-//        toolbar.setTitle("Home");
+        toolbar = (Toolbar) findViewById(R.id.toolbarHome);
+        setSupportActionBar(toolbar);
+
+        toolbar.setTitle("Home");
         loadFragment(new HomeFragment());
     }
 
@@ -41,22 +46,22 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navHome:
-//                    toolbar.setTitle("Home");
+                    toolbar.setTitle("Home");
                     fragment = new HomeFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navMyBooking:
-//                    toolbar.setTitle("My Bookings");
+                    toolbar.setTitle("My Bookings");
                     fragment = new MyBookingFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navInfo:
-//                    toolbar.setTitle("Info");
+                    toolbar.setTitle("Info");
                     fragment = new InfoFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navProfile:
-//                    toolbar.setTitle("Profile");
+                    toolbar.setTitle("Profile");
                     fragment = new ProfileFragment();
                     loadFragment(fragment);
                     return true;
@@ -70,5 +75,23 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.frameContainer, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.top_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        String msg = "";
+        switch (item.getItemId()){
+            case R.id.menuSearch:
+                msg = "Search Checked";
+                break;
+        }
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        return super.onOptionsItemSelected(item);
     }
 }
