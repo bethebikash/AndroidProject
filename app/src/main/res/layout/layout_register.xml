@@ -58,7 +58,7 @@
 
             <EditText
                 style="@style/modifiedEditText"
-                android:hint="@string/login_username_hint"
+                android:hint="@string/username_hint"
                 android:inputType="textVisiblePassword|textNoSuggestions"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -69,7 +69,7 @@
 
             <EditText
                 style="@style/modifiedEditText"
-                android:hint="@string/login_password_hint"
+                android:hint="@string/password_hint"
                 android:inputType="textPassword"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -78,12 +78,12 @@
             style="@style/primaryButton"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:text="Register" />
+            android:text="@string/btn_sign_up" />
 
         <TextView
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:text="@string/signup_login_hint"
+            android:text="@string/sign_up_login_hint"
             android:textAlignment="center"
             android:textColor="@color/primaryTextColor"
             android:textStyle="bold" />

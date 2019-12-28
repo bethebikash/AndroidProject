@@ -23,8 +23,7 @@
 
                     <ImageView
                         style="@style/parent"
-                        android:background="@drawable/header_layer"
-                        android:contentDescription="login background" />
+                        android:background="@drawable/header_layer" />
 
                 </LinearLayout>
 

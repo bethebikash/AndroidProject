@@ -1,9 +1,9 @@
 package com.bhattaraibikash.erepair;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,17 +21,19 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView navigation;
     private Toolbar toolbar;
-
+    private Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btnLogin = findViewById(R.id.btnLoginMenu);
+
         navigation = findViewById(R.id.bottomNavigation);
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbarHome);
+        toolbar = (Toolbar) findViewById(R.id.toolbarMain);
         setSupportActionBar(toolbar);
 
         toolbar.setTitle("Home");
@@ -47,21 +49,25 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navHome:
                     toolbar.setTitle("Home");
+                    btnLogin.setVisibility(View.INVISIBLE);
                     fragment = new HomeFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navMyBooking:
                     toolbar.setTitle("My Bookings");
+                    btnLogin.setVisibility(View.INVISIBLE);
                     fragment = new MyBookingFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navInfo:
                     toolbar.setTitle("Info");
+                    btnLogin.setVisibility(View.INVISIBLE);
                     fragment = new InfoFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navProfile:
-                    toolbar.setTitle("Profile");
+                    toolbar.setTitle("My Profile");
+                    btnLogin.setVisibility(View.VISIBLE);
                     fragment = new ProfileFragment();
                     loadFragment(fragment);
                     return true;
@@ -75,23 +81,5 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.frameContainer, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.top_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        String msg = "";
-        switch (item.getItemId()){
-            case R.id.menuSearch:
-                msg = "Search Checked";
-                break;
-        }
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-        return super.onOptionsItemSelected(item);
     }
 }
