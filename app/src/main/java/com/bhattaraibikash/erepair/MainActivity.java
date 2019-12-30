@@ -21,14 +21,14 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView navigation;
     private Toolbar toolbar;
-    private Button btnLogin;
+    private Button btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnLogin = findViewById(R.id.btnLoginMenu);
+        btnLogout = findViewById(R.id.btnLogout);
 
         navigation = findViewById(R.id.bottomNavigation);
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         toolbar.setTitle("Home");
+        btnLogout.setVisibility(View.INVISIBLE);
         loadFragment(new HomeFragment());
     }
 
@@ -49,29 +50,30 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navHome:
                     toolbar.setTitle("Home");
-                    btnLogin.setVisibility(View.INVISIBLE);
+                    btnLogout.setVisibility(View.INVISIBLE);
                     fragment = new HomeFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navMyBooking:
                     toolbar.setTitle("My Bookings");
-                    btnLogin.setVisibility(View.INVISIBLE);
+                    btnLogout.setVisibility(View.INVISIBLE);
                     fragment = new MyBookingFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navInfo:
                     toolbar.setTitle("Info");
-                    btnLogin.setVisibility(View.INVISIBLE);
+                    btnLogout.setVisibility(View.INVISIBLE);
                     fragment = new InfoFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navProfile:
                     toolbar.setTitle("My Profile");
-                    btnLogin.setVisibility(View.VISIBLE);
+                    btnLogout.setVisibility(View.VISIBLE);
                     fragment = new ProfileFragment();
                     loadFragment(fragment);
                     return true;
             }
+
             return false;
         }
     };

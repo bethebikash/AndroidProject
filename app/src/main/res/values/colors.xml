@@ -4,6 +4,7 @@
     <color name="colorPrimary">#0BB30B</color>
     <color name="colorPrimaryDark">#256D1B</color>
     <color name="colorPrimaryRipple">#9EFF8F</color>
+    <color name="colorBlack">#000000</color>
     <color name="colorAccent">#18D349</color>
     <color name="colorDisable">#5b6b5b</color>
 

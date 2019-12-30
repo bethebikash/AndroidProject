@@ -11,7 +11,11 @@
     <!--    Button  -->
     <string name="btn_login">Login</string>
     <string name="btn_sign_up">Sign Up</string>
+    <string name="btn_logout">Logout</string>
 
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="address">Address</string>
 
     <string name="login_email_hint">Email</string>
     <string name="username_hint">Username</string>
