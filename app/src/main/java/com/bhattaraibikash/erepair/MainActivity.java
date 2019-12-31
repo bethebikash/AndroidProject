@@ -11,15 +11,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.bhattaraibikash.erepair.fragment.HomeFragment;
-import com.bhattaraibikash.erepair.fragment.InfoFragment;
-import com.bhattaraibikash.erepair.fragment.MyBookingFragment;
-import com.bhattaraibikash.erepair.fragment.ProfileFragment;
+import com.bhattaraibikash.erepair.fragment.home.HomeFragment;
+import com.bhattaraibikash.erepair.fragment.info.InfoFragment;
+import com.bhattaraibikash.erepair.fragment.bookings.MyBookingFragment;
+import com.bhattaraibikash.erepair.fragment.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private BottomNavigationView navigation;
     private Toolbar toolbar;
     private Button btnLogout;
 
@@ -30,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
         btnLogout = findViewById(R.id.btnLogout);
 
-        navigation = findViewById(R.id.bottomNavigation);
+        BottomNavigationView navigation = findViewById(R.id.bottomNavigation);
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbarMain);
+        toolbar = findViewById(R.id.toolbarMain);
         setSupportActionBar(toolbar);
 
         toolbar.setTitle("Home");

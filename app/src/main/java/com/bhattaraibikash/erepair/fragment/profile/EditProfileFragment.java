@@ -1,4 +1,4 @@
-package com.bhattaraibikash.erepair.fragment;
+package com.bhattaraibikash.erepair.fragment.profile;
 
 
 import android.os.Bundle;
@@ -13,9 +13,10 @@ import com.bhattaraibikash.erepair.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class InfoFragment extends Fragment {
+public class EditProfileFragment extends Fragment {
 
-    public InfoFragment() {
+
+    public EditProfileFragment() {
         // Required empty public constructor
     }
 
@@ -24,10 +25,7 @@ public class InfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_info, container, false);
-
-
-        return view;
+        return inflater.inflate(R.layout.fragment_edit_profile, container, false);
     }
 
 }
