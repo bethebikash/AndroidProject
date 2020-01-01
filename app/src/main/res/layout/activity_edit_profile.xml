@@ -36,8 +36,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/parent"
             android:layout_marginStart="20dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="20dp"
@@ -47,16 +46,14 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNameEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/parent"
                 android:hint="Full Name"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/parent"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
@@ -66,16 +63,14 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etUsernameEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/parent"
                 android:hint="@string/username_hint"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/parent"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
@@ -85,16 +80,14 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmailEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/parent"
                 android:hint="@string/email_hint"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/parent"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
@@ -104,16 +97,14 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPhoneEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/parent"
                 android:hint="@string/phone_hint"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/parent"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
@@ -123,8 +114,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etAddressEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/parent"
                 android:hint="@string/address_hint"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -133,10 +123,8 @@
         <Button
             android:id="@+id/button"
             style="@style/primaryButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_margin="20dp"
             android:text="@string/btn_update"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

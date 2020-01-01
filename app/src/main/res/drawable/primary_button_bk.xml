@@ -10,7 +10,9 @@
         android:type="linear" />
 
     <size
-        android:width="180dp"
-        android:height="50dp" />
+        android:width="200dp"
+        android:height="50dp"
+        />
+    
 
 </shape>

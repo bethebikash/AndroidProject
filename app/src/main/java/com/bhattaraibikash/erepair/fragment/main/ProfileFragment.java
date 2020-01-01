@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.bhattaraibikash.erepair.R;
+import com.bhattaraibikash.erepair.activity.profile.ChangePasswordActivity;
 import com.bhattaraibikash.erepair.activity.profile.EditProfileActivity;
 
 /**
@@ -40,6 +41,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         ivBtnEditProfile = view.findViewById(R.id.ivBtnEditProfile);
+        ivBtnChangePassword = view.findViewById(R.id.ivBtnChangePassword);
 
         ivBtnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,11 +49,23 @@ public class ProfileFragment extends Fragment {
                 openEditProfile();
             }
         });
+
+        ivBtnChangePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openChangePassword();
+            }
+        });
         return view;
     }
 
     private void openEditProfile() {
         Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+        startActivity(intent);
+    }
+
+    private void openChangePassword(){
+        Intent intent = new Intent(getActivity(), ChangePasswordActivity.class);
         startActivity(intent);
     }
 }
