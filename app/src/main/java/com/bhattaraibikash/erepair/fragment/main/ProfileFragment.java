@@ -1,6 +1,7 @@
-package com.bhattaraibikash.erepair.fragment.profile;
+package com.bhattaraibikash.erepair.fragment.main;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.bhattaraibikash.erepair.R;
+import com.bhattaraibikash.erepair.activity.profile.EditProfileActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,10 +51,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void openEditProfile() {
-        EditProfileFragment editProfileFragment = new EditProfileFragment();
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frameContainer, editProfileFragment, "findThisFragment")
-                .addToBackStack(null)
-                .commit();
+        Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+        startActivity(intent);
     }
 }

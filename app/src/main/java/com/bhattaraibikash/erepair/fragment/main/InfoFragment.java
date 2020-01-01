@@ -1,4 +1,4 @@
-package com.bhattaraibikash.erepair.fragment.bookings;
+package com.bhattaraibikash.erepair.fragment.main;
 
 
 import android.os.Bundle;
@@ -13,9 +13,9 @@ import com.bhattaraibikash.erepair.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MyBookingFragment extends Fragment {
+public class InfoFragment extends Fragment {
 
-    public MyBookingFragment() {
+    public InfoFragment() {
         // Required empty public constructor
     }
 
@@ -23,9 +23,9 @@ public class MyBookingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_my_booking, container, false);
+        View view =  inflater.inflate(R.layout.fragment_info, container, false);
+
 
         return view;
     }

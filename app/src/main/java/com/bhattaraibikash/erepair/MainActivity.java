@@ -11,10 +11,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.bhattaraibikash.erepair.fragment.home.HomeFragment;
-import com.bhattaraibikash.erepair.fragment.info.InfoFragment;
-import com.bhattaraibikash.erepair.fragment.bookings.MyBookingFragment;
-import com.bhattaraibikash.erepair.fragment.profile.ProfileFragment;
+import com.bhattaraibikash.erepair.fragment.main.MyBookingFragment;
+import com.bhattaraibikash.erepair.fragment.main.HomeFragment;
+import com.bhattaraibikash.erepair.fragment.main.InfoFragment;
+import com.bhattaraibikash.erepair.fragment.main.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,17 +27,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        toolbar = findViewById(R.id.toolbarMain);
+        toolbar.setTitle("Home");
+        setSupportActionBar(toolbar);
+
         btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setVisibility(View.INVISIBLE);
+        loadFragment(new HomeFragment(), "Home");
 
         BottomNavigationView navigation = findViewById(R.id.bottomNavigation);
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
 
-        toolbar = findViewById(R.id.toolbarMain);
-        setSupportActionBar(toolbar);
-
-        toolbar.setTitle("Home");
-        btnLogout.setVisibility(View.INVISIBLE);
-        loadFragment(new HomeFragment());
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener
@@ -48,28 +48,24 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navHome:
-                    toolbar.setTitle("Home");
                     btnLogout.setVisibility(View.INVISIBLE);
                     fragment = new HomeFragment();
-                    loadFragment(fragment);
+                    loadFragment(fragment, "Home");
                     return true;
                 case R.id.navMyBooking:
-                    toolbar.setTitle("My Bookings");
                     btnLogout.setVisibility(View.INVISIBLE);
                     fragment = new MyBookingFragment();
-                    loadFragment(fragment);
+                    loadFragment(fragment, "My Bookings");
                     return true;
                 case R.id.navInfo:
-                    toolbar.setTitle("Info");
                     btnLogout.setVisibility(View.INVISIBLE);
                     fragment = new InfoFragment();
-                    loadFragment(fragment);
+                    loadFragment(fragment, "Info");
                     return true;
                 case R.id.navProfile:
-                    toolbar.setTitle("My Profile");
                     btnLogout.setVisibility(View.VISIBLE);
                     fragment = new ProfileFragment();
-                    loadFragment(fragment);
+                    loadFragment(fragment, "My Profile");
                     return true;
             }
 
@@ -77,10 +73,45 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void loadFragment(Fragment fragment) {
+    private void loadFragment(Fragment fragment, String toolbarTitle) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frameContainer, fragment);
+        toolbar.setTitle(toolbarTitle);
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
+
+
+//    @Override
+//    public void onBackPressed() {
+//        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
+//        int seletedItemId = bottomNavigationView.getSelectedItemId();
+//        if (R.id.home != seletedItemId) {
+//            setHomeItem(MainActivity.this);
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
+//
+//    public static void setHomeItem(Activity activity) {
+//        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+//                activity.findViewById(R.id.bottomNavigation);
+//        bottomNavigationView.setSelectedItemId(R.id.home);
+//    }
+
+    @Override
+    public void onBackPressed() {
+        BottomNavigationView mBottomNavigationView = findViewById(R.id.bottomNavigation);
+        if (mBottomNavigationView.getSelectedItemId() == R.id.bottomNavigation)
+        {
+            super.onBackPressed();
+            finish();
+        }
+        else
+        {
+            mBottomNavigationView.setSelectedItemId(R.id.bottomNavigation);
+        }
+    }
+
 }
