@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/loginParent"
     android:orientation="vertical"
-    tools:context="LoginActivity">
+    tools:context=".activities.LoginActivity">
 
     <ScrollView style="@style/parent">
 

@@ -1,5 +1,6 @@
-package com.bhattaraibikash.erepair;
+package com.bhattaraibikash.erepair.activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.bhattaraibikash.erepair.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -27,9 +30,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
-                if(username.isEmpty()){
+                if (username.isEmpty()) {
                     etUsername.setError("Enter Username!");
-                } else if(password.isEmpty()){
+                } else if (password.isEmpty()) {
                     etPassword.setError("Enter Password!");
                 } else {
                     SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
@@ -38,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("username", username);
                     editor.putString("password", password);
                     editor.commit();
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
 
 //                    verify(etUsername.getText().toString(), etPassword.getText().toString());
                 }

@@ -14,6 +14,7 @@
     <string name="btn_logout">Logout</string>
     <string name="btn_update">Update</string>
     <string name="btn_change_password">Change Password</string>
+    <string name="btn_send_request">Send Request</string>
 
     <string name="name_hint">Full Name</string>
     <string name="email_hint">Email</string>
@@ -21,6 +22,7 @@
     <string name="address_hint">Address</string>
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
+    <string name="skill_hint">Your Skill</string>
     <string name="sign_up_login_hint">Already have an account? Login</string>
     <string name="login_sign_up_hint">Don\'t have an account? Sign Up</string>
 
@@ -29,6 +31,9 @@
 
 
     <!--    Info    -->
+    <string name="become_professional">Become a Professional</string>
+    <string name="about">About eRepair</string>
     <string name="version">Version 1.0.0</string>
+    <string name="request_title">Fill this form and send your request</string>
 
 </resources>

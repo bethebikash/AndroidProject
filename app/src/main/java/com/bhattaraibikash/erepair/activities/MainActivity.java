@@ -1,9 +1,10 @@
-package com.bhattaraibikash.erepair;
+package com.bhattaraibikash.erepair.activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +12,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.bhattaraibikash.erepair.fragment.main.MyBookingFragment;
+import com.bhattaraibikash.erepair.R;
 import com.bhattaraibikash.erepair.fragment.main.HomeFragment;
 import com.bhattaraibikash.erepair.fragment.main.InfoFragment;
+import com.bhattaraibikash.erepair.fragment.main.MyBookingFragment;
 import com.bhattaraibikash.erepair.fragment.main.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -77,41 +79,23 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frameContainer, fragment);
         toolbar.setTitle(toolbarTitle);
-        transaction.addToBackStack(null);
         transaction.commit();
     }
 
 
+//    To handel back pressed behaviour.
 
-//    @Override
-//    public void onBackPressed() {
-//        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
-//        int seletedItemId = bottomNavigationView.getSelectedItemId();
-//        if (R.id.home != seletedItemId) {
-//            setHomeItem(MainActivity.this);
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
-//
-//    public static void setHomeItem(Activity activity) {
-//        BottomNavigationView bottomNavigationView = (BottomNavigationView)
-//                activity.findViewById(R.id.bottomNavigation);
-//        bottomNavigationView.setSelectedItemId(R.id.home);
-//    }
+    private static final int TIME_INTERVAL = 1000; // Time between two presses.
+    private long mBackPressed;
 
     @Override
     public void onBackPressed() {
-        BottomNavigationView mBottomNavigationView = findViewById(R.id.bottomNavigation);
-        if (mBottomNavigationView.getSelectedItemId() == R.id.bottomNavigation)
-        {
+        if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
             super.onBackPressed();
-            finish();
+            return;
+        } else {
+            Toast.makeText(getBaseContext(), "Tap back button in order to exit", Toast.LENGTH_SHORT).show();
         }
-        else
-        {
-            mBottomNavigationView.setSelectedItemId(R.id.bottomNavigation);
-        }
+        mBackPressed = System.currentTimeMillis();
     }
-
 }

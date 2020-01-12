@@ -12,8 +12,8 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.bhattaraibikash.erepair.R;
-import com.bhattaraibikash.erepair.activity.profile.ChangePasswordActivity;
-import com.bhattaraibikash.erepair.activity.profile.EditProfileActivity;
+import com.bhattaraibikash.erepair.activities.profile.ChangePasswordActivity;
+import com.bhattaraibikash.erepair.activities.profile.EditProfileActivity;
 
 /**
  * A simple {@link Fragment} subclass.

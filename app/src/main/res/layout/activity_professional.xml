@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingHorizontal="20dp"
+    android:layout_height="match_parent"
+    tools:context=".activities.info.ProfessionalActivity">
+
+    <TextView
+        style="@style/parent"
+        android:text="@string/request_title"
+        android:textSize="26sp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:padding="20dp"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputNamePro"
+        style="@style/parent"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/etNamePro"
+            style="@style/modifiedEditText"
+            android:hint="@string/name_hint"
+            android:inputType="textVisiblePassword|textNoSuggestions"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputEmailPro"
+        style="@style/parent"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/etEmailPro"
+            style="@style/modifiedEditText"
+            android:hint="@string/email_hint"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputAddressPro"
+        style="@style/parent"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/etAddressPro"
+            style="@style/modifiedEditText"
+            android:hint="@string/address_hint"
+            android:inputType="text"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputPhonePro"
+        style="@style/parent"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/etPhonePro"
+            style="@style/modifiedEditText"
+            android:hint="@string/phone_hint"
+            android:inputType="phone"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputSkillPro"
+        style="@style/parent"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/etSkillPro"
+            style="@style/modifiedEditText"
+            android:hint="@string/skill_hint"
+            android:inputType="text"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/btnRequest"
+        style="@style/primaryButton"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="@string/btn_send_request" />
+
+</LinearLayout>

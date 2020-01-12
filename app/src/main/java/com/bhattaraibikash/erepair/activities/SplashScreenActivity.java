@@ -1,4 +1,4 @@
-package com.bhattaraibikash.erepair;
+package com.bhattaraibikash.erepair.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.bhattaraibikash.erepair.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -24,7 +26,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 String username = sharedPreferences.getString("username", "");
                 String password = sharedPreferences.getString("password", "");
 
-                if (username.equals("bikash") && password.equals("root")) {
+                if (username.equals("admin") && password.equals("admin")) {
                     Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
