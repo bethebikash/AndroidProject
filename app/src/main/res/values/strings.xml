@@ -34,7 +34,19 @@
     <!--    Info    -->
     <string name="become_professional">Become a Professional</string>
     <string name="about">About eRepair</string>
+    <string name="contact_info">Contact Info</string>
     <string name="version">Version 1.0.0</string>
     <string name="request_title">Fill this form and send your request</string>
+
+    <!--    contact info-->
+    <string name="contact_us">Contact Us</string>
+    <string name="contact_us_text">Get help and support and get in touch with us.</string>
+    <string name="email_">info@erepair.com</string>
+    <string name="phone_">01441258</string>
+    <string name="address_">
+        Koteshwor 32, Kathnamdu \nBagmati, Nepal
+    </string>
+
+
 
 </resources>

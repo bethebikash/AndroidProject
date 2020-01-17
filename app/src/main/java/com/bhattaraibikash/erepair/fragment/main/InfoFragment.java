@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.bhattaraibikash.erepair.R;
 import com.bhattaraibikash.erepair.activities.info.AboutActivity;
+import com.bhattaraibikash.erepair.activities.info.ContactInfoActivity;
 import com.bhattaraibikash.erepair.activities.info.ProfessionalActivity;
 
 /**
@@ -19,7 +20,7 @@ import com.bhattaraibikash.erepair.activities.info.ProfessionalActivity;
  */
 public class InfoFragment extends Fragment {
 
-    LinearLayout llBecomeProfessional, llAbout;
+    LinearLayout llBecomeProfessional, llAbout, llContactInfo;
 
     public InfoFragment() {
         // Required empty public constructor
@@ -33,6 +34,7 @@ public class InfoFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_info, container, false);
         llBecomeProfessional = view.findViewById(R.id.llBecomeProfessional);
         llAbout = view.findViewById(R.id.llAbout);
+        llContactInfo = view.findViewById(R.id.llContactInfo);
 
         llBecomeProfessional.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +48,14 @@ public class InfoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AboutActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        llContactInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ContactInfoActivity.class);
                 startActivity(intent);
             }
         });
