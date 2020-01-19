@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +16,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
     private Button btnLogin;
+    private TextView signUpLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +25,18 @@ public class LoginActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        etUsername = (EditText) findViewById(R.id.etUsername);
-        etPassword = (EditText) findViewById(R.id.etPassword);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
+        etUsername = findViewById(R.id.etUsername);
+        etPassword = findViewById(R.id.etPassword);
+        btnLogin = findViewById(R.id.btnLogin);
+        signUpLink = findViewById(R.id.signUpLink);
+
+        signUpLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

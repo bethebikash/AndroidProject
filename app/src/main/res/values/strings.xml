@@ -16,6 +16,7 @@
     <string name="btn_update">Update</string>
     <string name="btn_change_password">Change Password</string>
     <string name="btn_send_request">Send Request</string>
+    <string name="btn_book">Book</string>
 
     <string name="name_hint">Full Name</string>
     <string name="email_hint">Email</string>
@@ -40,9 +41,9 @@
 
     <!--    contact info-->
     <string name="contact_us">Contact Us</string>
-    <string name="contact_us_text">Get help and support and get in touch with us.</string>
+    <string name="contact_us_text">Get help and support. Get in touch with us.</string>
     <string name="email_">info@erepair.com</string>
-    <string name="phone_">01441258</string>
+    <string name="phone_">01\-441258</string>
     <string name="address_">
         Koteshwor 32, Kathnamdu \nBagmati, Nepal
     </string>

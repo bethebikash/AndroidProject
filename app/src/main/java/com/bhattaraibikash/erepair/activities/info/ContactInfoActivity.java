@@ -22,6 +22,9 @@ public class ContactInfoActivity extends AppCompatActivity implements OnMapReady
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_info);
 
+        getSupportActionBar().setTitle("Contact Us");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);

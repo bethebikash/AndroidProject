@@ -8,8 +8,7 @@
     tools:context=".activities.info.ContactInfoActivity">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/parent"
         android:fontFamily="monospace"
         android:textColor="@color/colorPrimary"
         android:text="@string/contact_us"
@@ -17,54 +16,49 @@
         android:textStyle="bold" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/parent"
         android:layout_marginBottom="20dp"
         android:text="@string/contact_us_text" />
 
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/parent"
         android:text="@string/email_hint" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/parent"
         android:textColor="@color/colorPrimary"
         android:paddingBottom="10dp"
         android:text="@string/email_"
         android:textSize="20sp" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/parent"
         android:text="@string/phone_hint" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/parent"
+
         android:textColor="@color/colorPrimary"
         android:paddingBottom="10dp"
         android:text="@string/phone_"
         android:textSize="20sp" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/parent"
+
         android:text="@string/address_hint" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/parent"
+
         android:textColor="@color/colorPrimary"
         android:paddingBottom="10dp"
         android:text="@string/address_"
         android:textSize="20sp" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        style="@style/parent"
         android:layout_weight="1"
         android:orientation="vertical">
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
