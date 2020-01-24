@@ -14,13 +14,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bhattaraibikash.erepair.R;
+import com.bhattaraibikash.erepair.adapter.CategoryAdapter;
 import com.bhattaraibikash.erepair.adapter.SliderAdapter;
+import com.bhattaraibikash.erepair.models.Category;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,11 +35,11 @@ import com.smarteist.autoimageslider.SliderView;
 public class HomeFragment extends Fragment {
 
     private SliderView sliderView;
+    private RecyclerView rvCategory;
 
 
     public HomeFragment() {
         // Required empty public constructor
-
     }
 
 
@@ -63,6 +70,18 @@ public class HomeFragment extends Fragment {
                 sliderView.setCurrentPagePosition(position);
             }
         });
+
+        // Category Recycler view
+        rvCategory = view.findViewById(R.id.rvCategory);
+
+        List<Category> categoryList =new ArrayList<>();
+        categoryList.add(new Category("0222520", "category one", "icon"));
+        categoryList.add(new Category("5454851", "category two", "icon"));
+        categoryList.add(new Category("2125648", "category three", "icon"));
+
+        CategoryAdapter categoryAdapter = new CategoryAdapter(getContext(), categoryList);
+        rvCategory.setAdapter(categoryAdapter);
+        rvCategory.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         return (view);
     }
