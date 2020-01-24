@@ -19,8 +19,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bhattaraibikash.erepair.R;
 import com.bhattaraibikash.erepair.adapter.CategoryAdapter;
+import com.bhattaraibikash.erepair.adapter.ServiceAdapter;
 import com.bhattaraibikash.erepair.adapter.SliderAdapter;
 import com.bhattaraibikash.erepair.models.Category;
+import com.bhattaraibikash.erepair.models.Service;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -36,6 +38,7 @@ public class HomeFragment extends Fragment {
 
     private SliderView sliderView;
     private RecyclerView rvCategory;
+    private RecyclerView rvAllService;
 
 
     public HomeFragment() {
@@ -82,6 +85,20 @@ public class HomeFragment extends Fragment {
         CategoryAdapter categoryAdapter = new CategoryAdapter(getContext(), categoryList);
         rvCategory.setAdapter(categoryAdapter);
         rvCategory.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+        // Service Recycler view
+        rvAllService = view.findViewById(R.id.rvAllService);
+
+        List<Service> serviceList =new ArrayList<>();
+        serviceList.add(new Service("0222520", "Title one", "the description", "2514", "image", "category"));
+        serviceList.add(new Service("5454851", "Title two", "icon", "2514", "image", "category"));
+        serviceList.add(new Service("2125648", "Title three", "icon", "2514", "image", "category"));
+        serviceList.add(new Service("2125648", "Title four", "icon", "2514", "image", "category"));
+        serviceList.add(new Service("2125648", "Title five", "icon", "2514", "image", "category"));
+
+        ServiceAdapter serviceAdapter = new ServiceAdapter(getContext(), serviceList);
+        rvAllService.setAdapter(serviceAdapter);
+        rvAllService.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
         return (view);
     }
