@@ -1,6 +1,7 @@
 package com.bhattaraibikash.erepair.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bhattaraibikash.erepair.R;
+import com.bhattaraibikash.erepair.activities.service.ServiceDetailActivity;
 import com.bhattaraibikash.erepair.models.Service;
 
 import java.util.List;
@@ -46,9 +48,9 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
         holder.cardService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(context, ServiceDetailActivity.class);
+                Intent intent = new Intent(context, ServiceDetailActivity.class);
 //                intent.putExtra("_id", service.get_id());
-//                context.startActivity(intent);
+                context.startActivity(intent);
             }
         });
     }

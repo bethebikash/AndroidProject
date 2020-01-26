@@ -1,6 +1,7 @@
 package com.bhattaraibikash.erepair.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bhattaraibikash.erepair.R;
+import com.bhattaraibikash.erepair.activities.service.ServiceActivity;
 import com.bhattaraibikash.erepair.models.Category;
 
 import java.util.List;
@@ -45,9 +47,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.cardCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(context, ServicesActivity.class);
+                Intent intent = new Intent(context, ServiceActivity.class);
 //                intent.putExtra("_id", category.get_id());
-//                context.startActivity(intent);
+                context.startActivity(intent);
             }
         });
     }

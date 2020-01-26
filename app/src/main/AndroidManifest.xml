@@ -14,12 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activities.service.ServiceDetailActivity"></activity>
+        <activity android:name=".activities.service.ServiceActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAoCO5jGdsXmzfjJxme77WwO46b5niOMJQ" />
 
-        <activity android:name=".activities.info.ContactInfoActivity"></activity>
+        <activity android:name=".activities.info.ContactInfoActivity" />
         <activity android:name=".activities.info.AboutActivity" />
         <activity android:name=".activities.info.ProfessionalActivity" />
         <activity android:name=".activities.profile.ChangePasswordActivity" />
