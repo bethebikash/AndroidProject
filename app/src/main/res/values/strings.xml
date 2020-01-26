@@ -16,7 +16,8 @@
     <string name="btn_update">Update</string>
     <string name="btn_change_password">Change Password</string>
     <string name="btn_send_request">Send Request</string>
-    <string name="btn_book">Book</string>
+    <string name="btn_book_now">Book Now</string>
+    <string name="btn_confirm_book">Confirm Book</string>
 
     <string name="name_hint">Full Name</string>
     <string name="email_hint">Email</string>
