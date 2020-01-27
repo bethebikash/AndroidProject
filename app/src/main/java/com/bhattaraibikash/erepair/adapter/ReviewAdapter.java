@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bhattaraibikash.erepair.R;
-import com.bhattaraibikash.erepair.models.ReviewResponse;
+import com.bhattaraibikash.erepair.responses.ReviewResponse;
 
 import java.util.List;
 
