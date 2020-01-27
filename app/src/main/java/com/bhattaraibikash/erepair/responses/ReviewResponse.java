@@ -1,4 +1,4 @@
-package com.bhattaraibikash.erepair.models;
+package com.bhattaraibikash.erepair.responses;
 
 public class ReviewResponse {
     private String _id;

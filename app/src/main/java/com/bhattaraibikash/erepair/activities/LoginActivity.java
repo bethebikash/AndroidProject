@@ -7,10 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bhattaraibikash.erepair.R;
+import com.bhattaraibikash.erepair.controller.UserController;
+import com.bhattaraibikash.erepair.strictmode.StrictModeClass;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -41,34 +44,41 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
-                if (username.isEmpty()) {
+                if (etUsername.getText().toString().isEmpty()) {
                     etUsername.setError("Enter Username!");
-                } else if (password.isEmpty()) {
+                } else if (etPassword.getText().toString().isEmpty()) {
                     etPassword.setError("Enter Password!");
                 } else {
-                    SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-
-                    editor.putString("username", username);
-                    editor.putString("password", password);
-                    editor.commit();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-
-//                    verify(etUsername.getText().toString(), etPassword.getText().toString());
+                    login();
                 }
             }
         });
     }
 
-//    private void verify (String username, String password){
-//        if((username.equals("admin")) && (password.equals("admin"))){
-//            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(intent);
-//        } else {
-//            etUsername.setError("Incorrect Username or password");
-//        }
-//    }
+    private void login() {
+        String username = etUsername.getText().toString();
+        String password = etPassword.getText().toString();
+
+        UserController userController = new UserController();
+
+        StrictModeClass.StrictMode();
+        if (userController.checkUser(username, password)) {
+            Toast.makeText(this, "Login Successful.", Toast.LENGTH_SHORT).show();
+
+            SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+            editor.putString("username", username);
+            editor.putString("password", password);
+            editor.apply();
+
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+
+        } else {
+            etUsername.setError("Incorrect Username or Password");
+            etUsername.requestFocus();
+        }
+    }
 }
