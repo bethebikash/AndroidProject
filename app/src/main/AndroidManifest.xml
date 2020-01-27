@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.service.ServiceDetailActivity"></activity>
+        <activity android:name=".activities.search.SearchActivity"></activity>
+        <activity android:name=".activities.booking.BookingActivity" />
+        <activity android:name=".activities.service.ServiceDetailActivity" />
         <activity android:name=".activities.service.ServiceActivity" />
 
         <meta-data

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.booking.BookingActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="SCHEDULE YOUR BOOKING"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputProblem"
+            style="@style/parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etProblem"
+                style="@style/parent"
+                android:hint="@string/problem_hint"
+                android:inputType="text"
+                android:maxLines="4" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputDate"
+            style="@style/parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDate"
+                style="@style/parent"
+                android:hint="@string/date_hint"
+                android:inputType="text"
+                android:maxLines="5" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputTime"
+            style="@style/parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTime"
+                style="@style/parent"
+                android:clickable="false"
+                android:hint="@string/time_hint"
+                android:inputType="text"
+                android:maxLines="5" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp">
+
+            <Button
+                android:id="@+id/btnTime1"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:text="@string/time0608"
+                android:textColor="@color/colorPrimary" />
+
+            <Button
+                android:id="@+id/btnTime2"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:text="@string/time0810"
+                android:textColor="@color/colorPrimary" />
+
+            <Button
+                android:id="@+id/btnTime3"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:layout_columnWeight="1"
+                android:text="@string/time1012"
+                android:textColor="@color/colorPrimary" />
+
+            <Button
+                android:id="@+id/btnTime4"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:text="@string/time1202"
+                android:textColor="@color/colorPrimary" />
+
+            <Button
+                android:id="@+id/btnTime5"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:text="@string/time0204"
+                android:textColor="@color/colorPrimary" />
+
+            <Button
+                android:id="@+id/btnTime6"
+                android:layout_row="1"
+                android:layout_column="2"
+                android:layout_columnWeight="1"
+                android:text="@string/time0406"
+                android:textColor="@color/colorPrimary" />
+        </GridLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLocation"
+            style="@style/parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="18dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLocation"
+                style="@style/parent"
+                android:hint="@string/location_hint"
+                android:inputType="text"
+                android:maxLines="5" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnConfirmBook"
+            style="@style/primaryButton"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:text="@string/btn_confirm_book" />
+
+    </LinearLayout>
+</ScrollView>

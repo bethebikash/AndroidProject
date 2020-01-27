@@ -32,6 +32,19 @@
     <string name="old_password_hint">Old Password</string>
     <string name="new_password_hint">New Password</string>
 
+    <string name="problem_hint">Mention Your Problem</string>
+    <string name="date_hint">Pick Preferred Date</string>
+    <string name="time_hint">Choose Preferred Time</string>
+    <string name="location_hint">Your Location</string>
+
+
+    <string name="time0608">06 – 08 AM</string>
+    <string name="time0810">08 – 10 AM</string>
+    <string name="time1012">10 – 12 AM</string>
+    <string name="time1202">12 – 02 PM</string>
+    <string name="time0204">02 – 04 PM</string>
+    <string name="time0406">04 – 06 PM</string>
+
 
     <!--    Info    -->
     <string name="become_professional">Become a Professional</string>
