@@ -6,8 +6,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Url {
 
-    //    public static final String base_url = "http://172.100.100.5:300/"; my pc's ip
-    public static final String base_url = "http://10.0.2.2:3000/";
+        public static final String base_url = "http://172.26.10.218:3000/";
+//    public static final String base_url = "http://10.0.2.2:3000/";
 
     public static String token = "";
 

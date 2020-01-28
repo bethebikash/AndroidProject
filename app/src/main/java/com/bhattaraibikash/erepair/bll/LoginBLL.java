@@ -1,4 +1,4 @@
-package com.bhattaraibikash.erepair.controller;
+package com.bhattaraibikash.erepair.bll;
 
 import com.bhattaraibikash.erepair.api.UserApi;
 import com.bhattaraibikash.erepair.responses.LoginResponse;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class UserController {
+public class LoginBLL {
 
     boolean isSuccess = false;
 
