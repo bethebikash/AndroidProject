@@ -32,7 +32,6 @@ public class LoginInstrumentedTest {
         onView(withId(R.id.etPassword)).perform(typeText("admin123"), closeSoftKeyboard());
         onView(withId(R.id.btnLogin)).perform(click());
 
-
         onView(withId(R.id.frameContainer)).check(matches(isDisplayed()));
 
     }
