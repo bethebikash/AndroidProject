@@ -21,8 +21,10 @@ import com.bhattaraibikash.erepair.R;
 import com.bhattaraibikash.erepair.adapter.CategoryAdapter;
 import com.bhattaraibikash.erepair.adapter.ServiceAdapter;
 import com.bhattaraibikash.erepair.adapter.SliderAdapter;
+import com.bhattaraibikash.erepair.api.CategoryApi;
 import com.bhattaraibikash.erepair.models.Category;
 import com.bhattaraibikash.erepair.models.Service;
+import com.bhattaraibikash.erepair.url.Url;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -30,6 +32,10 @@ import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -77,14 +83,24 @@ public class HomeFragment extends Fragment {
         // Category Recycler view
         rvCategory = view.findViewById(R.id.rvCategory);
 
-        List<Category> categoryList =new ArrayList<>();
-        categoryList.add(new Category("0222520", "category one", "icon"));
-        categoryList.add(new Category("5454851", "category two", "icon"));
-        categoryList.add(new Category("2125648", "category three", "icon"));
+        CategoryApi categoryApi = Url.getInstance().create(CategoryApi.class);
 
-        CategoryAdapter categoryAdapter = new CategoryAdapter(getContext(), categoryList);
-        rvCategory.setAdapter(categoryAdapter);
-        rvCategory.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        Call<List<Category>> listCall = categoryApi.getCategories();
+        listCall.enqueue(new Callback<List<Category>>() {
+            @Override
+            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+                List<Category> categoryList = response.body();
+
+                CategoryAdapter categoryAdapter = new CategoryAdapter(getContext(), categoryList);
+                rvCategory.setAdapter(categoryAdapter);
+                rvCategory.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+            }
+
+            @Override
+            public void onFailure(Call<List<Category>> call, Throwable t) {
+                Toast.makeText(getActivity(), "failed:" + t, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // Service Recycler view
         rvAllService = view.findViewById(R.id.rvAllService);
