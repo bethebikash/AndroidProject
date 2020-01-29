@@ -36,6 +36,7 @@ public class ProfileFragment extends Fragment {
     private TextView tvEmailProfile;
     private TextView tvPhoneProfile;
     private TextView tvAddressProfile;
+    private String imagePath;
 
 
     public ProfileFragment() {
@@ -62,7 +63,20 @@ public class ProfileFragment extends Fragment {
         ivBtnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String name = tvNameProfile.getText().toString();
+                String username = tvUsernameProfile.getText().toString();
+                String email = tvEmailProfile.getText().toString();
+                String address = tvAddressProfile.getText().toString();
+                String phone = tvPhoneProfile.getText().toString();
+
                 Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                intent.putExtra("name", name);
+                intent.putExtra("username", username);
+                intent.putExtra("email", email);
+                intent.putExtra("address", address);
+                intent.putExtra("phone", phone);
+                intent.putExtra("imagePath", imagePath);
                 startActivity(intent);
             }
         });
@@ -91,16 +105,18 @@ public class ProfileFragment extends Fragment {
                     tvEmailProfile.setText(response.body().getEmail());
                     tvPhoneProfile.setText(response.body().getPhone());
                     tvAddressProfile.setText(response.body().getAddress());
+                    imagePath = response.body().getImage();
 
                     try {
                         Glide.with(ProfileFragment.this)
                                 .load(Url.base_url + response.body().getImage())
+                                .placeholder(R.drawable.default_profile)
                                 .into(ivProfileShow);
                     } catch (Exception e) {
                         // This will catch any exception, because they are all descended from Exception
                         System.out.println("Error " + e.getMessage());
-                        ivProfileShow.setImageResource(R.drawable.icon);
                     }
+
                 }
             }
 
