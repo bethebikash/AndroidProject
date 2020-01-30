@@ -22,6 +22,7 @@ import com.bhattaraibikash.erepair.adapter.CategoryAdapter;
 import com.bhattaraibikash.erepair.adapter.ServiceAdapter;
 import com.bhattaraibikash.erepair.adapter.SliderAdapter;
 import com.bhattaraibikash.erepair.api.CategoryApi;
+import com.bhattaraibikash.erepair.api.ServiceApi;
 import com.bhattaraibikash.erepair.models.Category;
 import com.bhattaraibikash.erepair.models.Service;
 import com.bhattaraibikash.erepair.url.Url;
@@ -30,7 +31,6 @@ import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawControlle
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -105,16 +105,25 @@ public class HomeFragment extends Fragment {
         // Service Recycler view
         rvAllService = view.findViewById(R.id.rvAllService);
 
-        List<Service> serviceList =new ArrayList<>();
-        serviceList.add(new Service("0222520", "Title one", "the description", "2514", "image", "category"));
-        serviceList.add(new Service("5454851", "Title two", "icon", "2514", "image", "category"));
-        serviceList.add(new Service("2125648", "Title three", "icon", "2514", "image", "category"));
-        serviceList.add(new Service("2125648", "Title four", "icon", "2514", "image", "category"));
-        serviceList.add(new Service("2125648", "Title five", "icon", "2514", "image", "category"));
+        ServiceApi serviceApi = Url.getInstance().create(ServiceApi.class);
 
-        ServiceAdapter serviceAdapter = new ServiceAdapter(getContext(), serviceList);
-        rvAllService.setAdapter(serviceAdapter);
-        rvAllService.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        Call<List<Service>> callService = serviceApi.getServices();
+        callService.enqueue(new Callback<List<Service>>() {
+            @Override
+            public void onResponse(Call<List<Service>> callService, Response<List<Service>> response) {
+                List<Service> serviceList = response.body();
+
+                ServiceAdapter serviceAdapter = new ServiceAdapter(getContext(), serviceList);
+                rvAllService.setAdapter(serviceAdapter);
+                rvAllService.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Service>> callService, Throwable t) {
+                Toast.makeText(getActivity(), "failed:" + t, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return (view);
     }

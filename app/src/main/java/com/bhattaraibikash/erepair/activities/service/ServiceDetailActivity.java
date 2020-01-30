@@ -3,6 +3,7 @@ package com.bhattaraibikash.erepair.activities.service;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ public class ServiceDetailActivity extends AppCompatActivity {
     private TextView tvService, tvCategorySD, tvPrice;
     private Button btnBookNow;
     private RecyclerView rvReview;
+    private String _id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,15 @@ public class ServiceDetailActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Service Detail");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Bundle extra = getIntent().getExtras();
+
+        if (!extra.isEmpty()) {
+            _id = extra.getString("_id");
+
+        } else {
+            Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
+        }
 
         // Service Recycler view
         rvReview = findViewById(R.id.rvReview);
