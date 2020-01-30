@@ -15,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bhattaraibikash.erepair.R;
 import com.bhattaraibikash.erepair.activities.service.ServiceDetailActivity;
 import com.bhattaraibikash.erepair.models.Service;
+import com.bhattaraibikash.erepair.url.Url;
+import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -39,17 +42,26 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
     public void onBindViewHolder(@NonNull ServiceViewHolder holder, int position) {
         final Service service = serviceList.get(position);
         holder.ivService.setImageResource(R.drawable.icon);
-//        Glide.with(holder.itemView)
-//                .load(Url.base_url+service.getImage())
-//                .into(holder.ivService);
+        Glide.with(holder.itemView)
+                .load(Url.base_url+service.getImage())
+                .placeholder(R.drawable.icon)
+                .into(holder.ivService);
         holder.tvServiceName.setText(service.getTitle());
-        holder.tvCatNameS.setText(service.getCategory());
+
+
+        Gson gson = new Gson();
+        String json = gson.toJson(service.getCategory()); //convert
+
+        String[] arrayString = json.split("\"");
+        String data = arrayString[7];
+
+        holder.tvCatNameS.setText(data);
 
         holder.cardService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ServiceDetailActivity.class);
-//                intent.putExtra("_id", service.get_id());
+                intent.putExtra("_id", service.get_id());
                 context.startActivity(intent);
             }
         });
