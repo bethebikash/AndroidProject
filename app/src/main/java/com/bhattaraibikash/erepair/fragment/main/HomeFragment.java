@@ -102,7 +102,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        // Service Recycler view
+//         Service Recycler view
         rvAllService = view.findViewById(R.id.rvAllService);
 
         ServiceApi serviceApi = Url.getInstance().create(ServiceApi.class);

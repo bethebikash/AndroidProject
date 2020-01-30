@@ -10,6 +10,6 @@ import retrofit2.http.Query;
 
 public interface ReviewApi {
 
-    @GET("reviews")
+    @GET("reviews-service")
     Call<List<ReviewResponse>> getReview(@Query("service") String _id);
 }

@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bhattaraibikash.erepair.R;
-import com.bhattaraibikash.erepair.controller.UserController;
+import com.bhattaraibikash.erepair.bll.LoginBLL;
 import com.bhattaraibikash.erepair.strictmode.StrictModeClass;
 
 public class LoginActivity extends AppCompatActivity {
@@ -59,10 +59,10 @@ public class LoginActivity extends AppCompatActivity {
         String username = etUsername.getText().toString();
         String password = etPassword.getText().toString();
 
-        UserController userController = new UserController();
+        LoginBLL loginBLL = new LoginBLL();
 
         StrictModeClass.StrictMode();
-        if (userController.checkUser(username, password)) {
+        if (loginBLL.checkUser(username, password)) {
             Toast.makeText(this, "Login Successful.", Toast.LENGTH_SHORT).show();
 
             SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
