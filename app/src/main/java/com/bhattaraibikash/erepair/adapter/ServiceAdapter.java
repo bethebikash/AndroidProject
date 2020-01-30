@@ -17,7 +17,6 @@ import com.bhattaraibikash.erepair.activities.service.ServiceDetailActivity;
 import com.bhattaraibikash.erepair.models.Service;
 import com.bhattaraibikash.erepair.url.Url;
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -43,19 +42,18 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
         final Service service = serviceList.get(position);
         holder.ivService.setImageResource(R.drawable.icon);
         Glide.with(holder.itemView)
-                .load(Url.base_url+service.getImage())
+                .load(Url.base_url + service.getImage())
                 .placeholder(R.drawable.icon)
                 .into(holder.ivService);
         holder.tvServiceName.setText(service.getTitle());
 
+//        Gson gson = new Gson();
+//        String json = gson.toJson(service.getCategory()); //convert
 
-        Gson gson = new Gson();
-        String json = gson.toJson(service.getCategory()); //convert
+//        String[] arrayString = json.split("\"");
+//        String data = arrayString[7];
 
-        String[] arrayString = json.split("\"");
-        String data = arrayString[7];
-
-        holder.tvCatNameS.setText(data);
+        holder.tvCatNameS.setText("Rs. "+service.getPrice());
 
         holder.cardService.setOnClickListener(new View.OnClickListener() {
             @Override

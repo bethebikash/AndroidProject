@@ -1,6 +1,8 @@
 package com.bhattaraibikash.erepair.activities.service;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bhattaraibikash.erepair.R;
+import com.bhattaraibikash.erepair.activities.booking.BookingActivity;
 import com.bhattaraibikash.erepair.adapter.ReviewAdapter;
 import com.bhattaraibikash.erepair.api.ReviewApi;
 import com.bhattaraibikash.erepair.api.ServiceApi;
@@ -48,12 +51,12 @@ public class ServiceDetailActivity extends AppCompatActivity {
         tvService = findViewById(R.id.tvService);
         tvDescription = findViewById(R.id.tvDescription);
         ivServiceSD = findViewById(R.id.ivServiceSD);
+        btnBookNow = findViewById(R.id.btnBookNow);
 
         Bundle extra = getIntent().getExtras();
 
         if (!extra.isEmpty()) {
             _id = extra.getString("_id");
-
         } else {
             Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
         }
@@ -117,6 +120,16 @@ public class ServiceDetailActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<ReviewResponse>> call, Throwable t) {
+            }
+        });
+
+
+        btnBookNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ServiceDetailActivity.this, BookingActivity.class);
+                intent.putExtra("_id", _id);
+                startActivity(intent);
             }
         });
 
