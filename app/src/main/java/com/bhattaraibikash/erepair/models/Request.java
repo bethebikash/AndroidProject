@@ -1,20 +1,18 @@
-package com.bhattaraibikash.erepair.responses;
+package com.bhattaraibikash.erepair.models;
 
-public class UserResponse {
+public class Request {
     private String name;
     private String email;
     private String address;
     private String phone;
-    private String username;
-    private String image;
+    private String skills;
 
-    public UserResponse(String name, String email, String address, String phone, String username, String image) {
+    public Request(String name, String email, String address, String phone, String skills) {
         this.name = name;
         this.email = email;
         this.address = address;
         this.phone = phone;
-        this.username = username;
-        this.image = image;
+        this.skills = skills;
     }
 
     public String getName() {
@@ -29,6 +27,9 @@ public class UserResponse {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getAddress() {
         return address;
@@ -42,13 +43,15 @@ public class UserResponse {
         return phone;
     }
 
-
-    public String getUsername() {
-        return username;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
+    public String getSkills() {
+        return skills;
+    }
 
-    public String getImage() {
-        return image;
+    public void setSkills(String skills) {
+        this.skills = skills;
     }
 }

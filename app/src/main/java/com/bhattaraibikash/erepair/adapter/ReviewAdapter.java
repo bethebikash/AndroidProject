@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bhattaraibikash.erepair.R;
 import com.bhattaraibikash.erepair.responses.ReviewResponse;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -34,9 +35,21 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
     @Override
     public void onBindViewHolder(@NonNull ReviewViewHolder holder, int position) {
         final ReviewResponse reviewResponse = reviewResponseList.get(position);
-        holder.tvUserFullName.setText(reviewResponse.getUser());
-        holder.tvUserAddress.setText(reviewResponse.getAddress());
-        holder.tvDateOfReview.setText(reviewResponse.getDateOfReview());
+
+        Gson gson = new Gson();
+        String json = gson.toJson(reviewResponse.getUser()); //convert
+
+        String[] arrayString = json.split("\"");
+        String name = arrayString[7];
+        String address = arrayString[11];
+
+        holder.tvUserFullName.setText(name);
+        holder.tvUserAddress.setText(address);
+
+        String[] isodate = reviewResponse.getCreatedAt().split("T");
+        String date = isodate[0];
+
+        holder.tvDateOfReview.setText(date);
         holder.tvReview.setText(reviewResponse.getReview());
 
     }

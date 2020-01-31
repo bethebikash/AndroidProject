@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bhattaraibikash.erepair.R;
 import com.bhattaraibikash.erepair.activities.service.ServiceActivity;
 import com.bhattaraibikash.erepair.models.Category;
+import com.bhattaraibikash.erepair.url.Url;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -39,16 +41,18 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         final Category category = categoryList.get(position);
         holder.ivCategory.setImageResource(R.drawable.icon);
-//        Glide.with(holder.itemView)
-//                .load(Url.base_url+category.getIcon())
-//                .into(holder.ivCategory);
+        Glide.with(holder.itemView)
+                .load(Url.base_url+category.getIcon())
+                .placeholder(R.drawable.icon)
+                .into(holder.ivCategory);
         holder.tvCatName.setText(category.getName());
 
         holder.cardCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ServiceActivity.class);
-//                intent.putExtra("_id", category.get_id());
+                intent.putExtra("_id", category.get_id());
+                intent.putExtra("catName", category.getName());
                 context.startActivity(intent);
             }
         });
