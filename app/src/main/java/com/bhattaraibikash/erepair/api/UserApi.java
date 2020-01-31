@@ -27,16 +27,19 @@ public interface UserApi {
 
     @Multipart
     @POST("upload")
-    Call<Void> uploadImage(@Header("Authorization") String token, @Part MultipartBody.Part image);
+    Call<Void> uploadImage(@Header("Authorization") String token,
+                           @Part MultipartBody.Part image);
 
     @GET("users/me")
     Call<UserResponse> getUserDetails(@Header("Authorization") String token);
 
+    @FormUrlEncoded
     @PUT("users/me")
     Call<UserResponse> userProfileUpdate(@Header("Authorization") String token,
-                                 @Body String name,
-                                 @Body String email,
-                                 @Body String address,
-                                 @Body String phone,
-                                 @Body String username);
+                                         @Field("name") String name,
+                                         @Field("email") String email,
+                                         @Field("address") String address,
+                                         @Field("phone") String phone,
+                                         @Field("username") String username);
+
 }

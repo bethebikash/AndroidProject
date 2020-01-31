@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat;
 import androidx.loader.content.CursorLoader;
 
 import com.bhattaraibikash.erepair.R;
+import com.bhattaraibikash.erepair.activities.MainActivity;
 import com.bhattaraibikash.erepair.api.UserApi;
 import com.bhattaraibikash.erepair.responses.UserResponse;
 import com.bhattaraibikash.erepair.strictmode.StrictModeClass;
@@ -94,7 +95,9 @@ public class EditProfileActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateProfile();
+                if(validate()){
+                    updateProfile();
+                }
             }
         });
     }
@@ -216,8 +219,10 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(EditProfileActivity.this, "Profile Updated.", Toast.LENGTH_SHORT).show();
-                    return;
+                    Toast.makeText(EditProfileActivity.this, "Profile Updated Successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(EditProfileActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
 
