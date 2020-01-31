@@ -1,8 +1,8 @@
 package com.bhattaraibikash.erepair;
 
 import androidx.test.filters.LargeTest;
-import androidx.test.runner.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
+import androidx.test.runner.AndroidJUnit4;
 
 import com.bhattaraibikash.erepair.activities.LoginActivity;
 
