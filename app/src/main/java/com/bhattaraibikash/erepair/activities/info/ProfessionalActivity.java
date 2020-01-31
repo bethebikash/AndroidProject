@@ -1,12 +1,22 @@
 package com.bhattaraibikash.erepair.activities.info;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bhattaraibikash.erepair.R;
+import com.bhattaraibikash.erepair.bll.RequestBLL;
+import com.bhattaraibikash.erepair.models.Request;
+import com.bhattaraibikash.erepair.strictmode.StrictModeClass;
 
 public class ProfessionalActivity extends AppCompatActivity {
+    private EditText etNamePro, etEmailPro, etAddressPro, etPhonePro, etSkillPro;
+    private Button btnRequest;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +25,75 @@ public class ProfessionalActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Become Professional");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        etNamePro = findViewById(R.id.etNamePro);
+        etEmailPro = findViewById(R.id.etEmailPro);
+        etAddressPro = findViewById(R.id.etAddressPro);
+        etPhonePro = findViewById(R.id.etPhonePro);
+        etSkillPro = findViewById(R.id.etSkillPro);
+        btnRequest = findViewById(R.id.btnRequest);
+
+        btnRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(validate()){
+                    sendRequest();
+                }
+            }
+        });
+    }
+
+    private boolean validate() {
+        boolean status;
+        if (etNamePro.getText().toString().isEmpty()) {
+            etNamePro.setError("Name is Required");
+            etNamePro.requestFocus();
+            status = false;
+        } else if (etEmailPro.getText().toString().isEmpty()) {
+            etEmailPro.setError("Email is Required");
+            etEmailPro.requestFocus();
+            status = false;
+        } else if (etAddressPro.getText().toString().isEmpty()) {
+            etAddressPro.setError("Address is Required");
+            etAddressPro.requestFocus();
+            status = false;
+        } else if (etPhonePro.getText().toString().isEmpty()) {
+            etPhonePro.setError("Phone is Required");
+            etPhonePro.requestFocus();
+            status = false;
+        }else if (etSkillPro.getText().toString().isEmpty()) {
+            etSkillPro.setError("Skills is Required");
+            etSkillPro.requestFocus();
+            status = false;
+        } else if (!etEmailPro.getText().toString().trim().matches(emailPattern)) {
+            etEmailPro.setError("Invalid email");
+            etEmailPro.requestFocus();
+            status = false;
+        }else {
+            status = true;
+        }
+
+        return status;
+    }
+
+    private void sendRequest() {
+        String name = etNamePro.getText().toString();
+        String email = etEmailPro.getText().toString();
+        String address = etAddressPro.getText().toString();
+        String phone = etPhonePro.getText().toString();
+        String skills = etSkillPro.getText().toString();
+
+        Request request = new Request(name, email, address, phone, skills);
+        RequestBLL requestBLL = new RequestBLL();
+
+        StrictModeClass.StrictMode();
+        if (requestBLL.sendRequest(request)) {
+            Toast.makeText(this, "Request has been send Successful.", Toast.LENGTH_SHORT).show();
+            finish();
+        } else {
+            Toast.makeText(this, "Booking Failed.", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     @Override
