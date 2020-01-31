@@ -8,6 +8,8 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bhattaraibikash.erepair.R;
+import com.bhattaraibikash.erepair.bll.LoginBLL;
+import com.bhattaraibikash.erepair.strictmode.StrictModeClass;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -28,7 +30,10 @@ public class SplashScreenActivity extends AppCompatActivity {
                 String username = sharedPreferences.getString("username", "");
                 String password = sharedPreferences.getString("password", "");
 
-                if (username.equals("admin") && password.equals("admin")) {
+                LoginBLL loginBLL = new LoginBLL();
+
+                StrictModeClass.StrictMode();
+                if (loginBLL.checkUser(username, password)) {
                     Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
