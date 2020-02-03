@@ -18,13 +18,24 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String from;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loadFragment(new HomeFragment(), "Home");
+        Bundle extra = getIntent().getExtras();
+        if (extra != null && !extra.isEmpty()) {
+            from = extra.getString("from");
+            if(from.equals("EditProfile")){
+                loadFragment(new ProfileFragment(), "My Profile");
+            } else if(from.equals("Booking")){
+                loadFragment(new MyBookingFragment(), "My Bookings");
+            }
+        } else {
+            loadFragment(new HomeFragment(), "Home");
+        }
 
         BottomNavigationView navigation = findViewById(R.id.bottomNavigation);
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);

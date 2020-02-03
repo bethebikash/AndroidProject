@@ -5,7 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".fragment.main.MyBookingFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMyBookings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp" />
+
     <LinearLayout
+        android:id="@+id/noBooking"
         style="@style/parent"
         android:gravity="center"
         android:layout_width="match_parent"

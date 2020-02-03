@@ -167,6 +167,7 @@ public class BookingActivity extends AppCompatActivity {
         if (bookingBLL.booking(Url.token, booking)) {
             Toast.makeText(this, "Booking Successful.", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(BookingActivity.this, MainActivity.class);
+            intent.putExtra("from", "Booking");
             startActivity(intent);
         } else {
             Toast.makeText(this, "Booking Failed.", Toast.LENGTH_SHORT).show();

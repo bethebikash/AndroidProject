@@ -218,11 +218,11 @@ public class EditProfileActivity extends AppCompatActivity {
         responseCall.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                if (!response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     Toast.makeText(EditProfileActivity.this, "Profile Updated Successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(EditProfileActivity.this, MainActivity.class);
+                    intent.putExtra("from", "EditProfile");
                     startActivity(intent);
-                    finish();
                 }
             }
 
