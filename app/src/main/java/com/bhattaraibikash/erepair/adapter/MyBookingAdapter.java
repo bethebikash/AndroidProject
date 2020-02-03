@@ -40,22 +40,23 @@ public class MyBookingAdapter extends RecyclerView.Adapter<MyBookingAdapter.MyBo
         final MyBookingResponse myBookingResponse = myBookingResponseList.get(position);
 
         holder.tvProblemBook.setText(myBookingResponse.getProblem());
-        holder.tvDateBook.setText(myBookingResponse.getDate());
-        holder.tvTimeBook.setText(myBookingResponse.getTime());
-        holder.tvLocationBook.setText(myBookingResponse.getLocation());
+        holder.tvDateBook.setText("Date: "+myBookingResponse.getDate());
+        holder.tvTimeBook.setText("Time: "+myBookingResponse.getTime());
+        holder.tvLocationBook.setText("Location: "+myBookingResponse.getLocation());
         holder.tvStatusBook.setText(myBookingResponse.getStatus());
 
                 Gson gson = new Gson();
         String json = gson.toJson(myBookingResponse.getService()); //convert
 
         String[] arrayString = json.split("\"");
-        final String data = arrayString[1];
+        final String data = arrayString[3];
+
 
         holder.btnReviewBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ReviewActivity.class);
-                intent.putExtra("_id", data);
+                intent.putExtra("service", data);
                 context.startActivity(intent);
             }
         });

@@ -39,6 +39,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:layout_marginTop="10dp"
                 android:id="@+id/tvDateBook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -32,6 +32,9 @@ public class BookingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
 
+        getSupportActionBar().setTitle("Service Book");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         etProblem = findViewById(R.id.etProblem);
         etDate = findViewById(R.id.etDate);
         etTime = findViewById(R.id.etTime);
@@ -173,5 +176,11 @@ public class BookingActivity extends AppCompatActivity {
             Toast.makeText(this, "Booking Failed.", Toast.LENGTH_SHORT).show();
 
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 }
