@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bhattaraibikash.erepair.R;
 import com.bhattaraibikash.erepair.activities.booking.ReviewActivity;
 import com.bhattaraibikash.erepair.responses.MyBookingResponse;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -44,11 +45,17 @@ public class MyBookingAdapter extends RecyclerView.Adapter<MyBookingAdapter.MyBo
         holder.tvLocationBook.setText(myBookingResponse.getLocation());
         holder.tvStatusBook.setText(myBookingResponse.getStatus());
 
+                Gson gson = new Gson();
+        String json = gson.toJson(myBookingResponse.getService()); //convert
+
+        String[] arrayString = json.split("\"");
+        final String data = arrayString[1];
+
         holder.btnReviewBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ReviewActivity.class);
-//                intent.putExtra("_id", service.get_id());
+                intent.putExtra("_id", data);
                 context.startActivity(intent);
             }
         });
