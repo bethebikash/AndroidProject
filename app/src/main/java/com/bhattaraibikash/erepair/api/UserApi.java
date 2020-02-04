@@ -27,7 +27,7 @@ public interface UserApi {
                                   @Field("password") String password);
 
     @Multipart
-    @POST("upload")
+    @POST("users/me/upload")
     Call<Void> uploadImage(@Header("Authorization") String token,
                            @Part MultipartBody.Part image);
 

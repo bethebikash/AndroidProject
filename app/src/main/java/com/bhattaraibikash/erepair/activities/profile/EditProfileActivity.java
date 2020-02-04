@@ -44,6 +44,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private ImageView ivProfileEdit;
     private TextView tvChoosePhoto;
+    private String select = "";
 
     private EditText etNameEdit, etUsernameEdit, etEmailEdit, etPhoneEdit, etAddressEdit;
     private Button btnUpdate;
@@ -76,11 +77,11 @@ public class EditProfileActivity extends AppCompatActivity {
             etEmailEdit.setText(extra.getString("email"));
             etPhoneEdit.setText(extra.getString("phone"));
             etAddressEdit.setText(extra.getString("address"));
-            Glide.with(EditProfileActivity.this)
-                    .load(Url.base_url + extra.getString("imagePath"))
-                    .placeholder(R.drawable.default_profile)
-                    .into(ivProfileEdit);
-
+            if(select.isEmpty()) {
+                Glide.with(EditProfileActivity.this)
+                        .load(Url.base_url + extra.getString("imagePath"))
+                        .into(ivProfileEdit);
+            }
         } else {
             Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
         }
@@ -96,6 +97,7 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(validate()){
+                    imageUpload();
                     updateProfile();
                 }
             }
@@ -132,6 +134,7 @@ public class EditProfileActivity extends AppCompatActivity {
         }
 
         Uri uri = data.getData();
+        select = "hasImage";
         ivProfileEdit.setImageURI(uri);
         imagePath = getRealPathFromUri(uri);
     }
@@ -195,10 +198,12 @@ public class EditProfileActivity extends AppCompatActivity {
         Call<Void> call = userApi.uploadImage(Url.token, body);
 
         StrictModeClass.StrictMode();
-        //Synchronous methid
+        //Synchronous method
         try {
             Response<Void> imageResponseResponse = call.execute();
-            Toast.makeText(this, "Image inserted", Toast.LENGTH_SHORT).show();
+            if (imageResponseResponse.isSuccessful()) {
+                Toast.makeText(this, "Profile picture uploaded", Toast.LENGTH_SHORT).show();
+            }
         } catch (IOException e) {
             Toast.makeText(this, "Error" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             e.printStackTrace();
