@@ -1,5 +1,6 @@
 package com.bhattaraibikash.erepair.activities.info;
 
+import android.app.Notification;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,16 +8,22 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.bhattaraibikash.erepair.R;
 import com.bhattaraibikash.erepair.bll.RequestBLL;
 import com.bhattaraibikash.erepair.models.Request;
+import com.bhattaraibikash.erepair.notification.CreateChannel;
 import com.bhattaraibikash.erepair.strictmode.StrictModeClass;
 
 public class ProfessionalActivity extends AppCompatActivity {
     private EditText etNamePro, etEmailPro, etAddressPro, etPhonePro, etSkillPro;
     private Button btnRequest;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+    private NotificationManagerCompat notificationManagerCompat;
+    private int count = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +32,10 @@ public class ProfessionalActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Become Professional");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        CreateChannel channel = new CreateChannel(this);
+        channel.createChannel();
 
         etNamePro = findViewById(R.id.etNamePro);
         etEmailPro = findViewById(R.id.etEmailPro);
@@ -89,11 +100,25 @@ public class ProfessionalActivity extends AppCompatActivity {
         StrictModeClass.StrictMode();
         if (requestBLL.sendRequest(request)) {
             Toast.makeText(this, "Request has been send Successful.", Toast.LENGTH_SHORT).show();
+
+            count++;
+            ProfessionalRequestNotification("Professional Request", "Your request to become a professional has been send.");
             finish();
         } else {
             Toast.makeText(this, "Booking Failed.", Toast.LENGTH_SHORT).show();
 
         }
+    }
+
+    private  void ProfessionalRequestNotification(String title, String message) {
+        Notification notification = new NotificationCompat.Builder(this, CreateChannel.CHANNEL_1)
+                .setSmallIcon(R.drawable.icon)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        notificationManagerCompat.notify(count, notification);
     }
 
     @Override
