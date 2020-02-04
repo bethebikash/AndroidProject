@@ -1,6 +1,7 @@
 package com.bhattaraibikash.erepair.activities.booking;
 
 import android.app.DatePickerDialog;
+import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +11,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.bhattaraibikash.erepair.R;
 import com.bhattaraibikash.erepair.activities.MainActivity;
 import com.bhattaraibikash.erepair.bll.BookingBLL;
 import com.bhattaraibikash.erepair.models.Booking;
+import com.bhattaraibikash.erepair.notification.CreateChannel;
 import com.bhattaraibikash.erepair.strictmode.StrictModeClass;
 import com.bhattaraibikash.erepair.url.Url;
 
@@ -26,6 +30,9 @@ public class BookingActivity extends AppCompatActivity {
     private Button btnConfirmBook;
     private Button btnTime1, btnTime2, btnTime3, btnTime4, btnTime5, btnTime6;
     private String serviceId;
+    private NotificationManagerCompat notificationManagerCompat;
+    private int count = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +41,10 @@ public class BookingActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Service Book");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        CreateChannel channel = new CreateChannel(this);
+        channel.createChannel();
 
         etProblem = findViewById(R.id.etProblem);
         etDate = findViewById(R.id.etDate);
@@ -169,6 +180,10 @@ public class BookingActivity extends AppCompatActivity {
         StrictModeClass.StrictMode();
         if (bookingBLL.booking(Url.token, booking)) {
             Toast.makeText(this, "Booking Successful.", Toast.LENGTH_SHORT).show();
+
+            count++;
+            BookingNotification("Service Booking", "Your booking is scheduled for "+date+" "+time);
+
             Intent intent = new Intent(BookingActivity.this, MainActivity.class);
             intent.putExtra("from", "Booking");
             startActivity(intent);
@@ -176,6 +191,17 @@ public class BookingActivity extends AppCompatActivity {
             Toast.makeText(this, "Booking Failed.", Toast.LENGTH_SHORT).show();
 
         }
+    }
+
+    private  void BookingNotification(String title, String message) {
+        Notification notification = new NotificationCompat.Builder(this, CreateChannel.CHANNEL_1)
+                .setSmallIcon(R.drawable.icon)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        notificationManagerCompat.notify(count, notification);
     }
 
     @Override
