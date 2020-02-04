@@ -1,5 +1,6 @@
 package com.bhattaraibikash.erepair.activities.profile;
 
+import android.app.Notification;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,9 +8,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.bhattaraibikash.erepair.R;
 import com.bhattaraibikash.erepair.api.UserApi;
+import com.bhattaraibikash.erepair.notification.CreateChannel;
 import com.bhattaraibikash.erepair.url.Url;
 
 import retrofit2.Call;
@@ -20,6 +24,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private EditText etOldPassword, etNewPassword;
     private Button btnChangePassword;
 
+    private NotificationManagerCompat notificationManagerCompat;
+    private int count = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +34,10 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Change Password");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        CreateChannel channel = new CreateChannel(this);
+        channel.createChannel();
 
         etOldPassword = findViewById(R.id.etOldPassword);
         etNewPassword = findViewById(R.id.etNewPassword);
@@ -75,6 +86,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(ChangePasswordActivity.this, "Password has been changed Successfully", Toast.LENGTH_SHORT).show();
+
+                    count++;
+                    ChangePasswordNotification("Password Changed", "Your password has been changed successfully.");
                     finish();
                 } else {
                     Toast.makeText(ChangePasswordActivity.this, "Your old password does not match", Toast.LENGTH_SHORT).show();
@@ -87,6 +101,17 @@ public class ChangePasswordActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private  void ChangePasswordNotification(String title, String message) {
+        Notification notification = new NotificationCompat.Builder(this, CreateChannel.CHANNEL_2)
+                .setSmallIcon(R.drawable.icon)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        notificationManagerCompat.notify(count, notification);
     }
 
     @Override

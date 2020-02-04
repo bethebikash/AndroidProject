@@ -97,7 +97,9 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(validate()){
-                    imageUpload();
+                    if(!select.isEmpty()){
+                        imageUpload();
+                    }
                     updateProfile();
                 }
             }
