@@ -40,8 +40,8 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
         String json = gson.toJson(reviewResponse.getUser()); //convert
 
         String[] arrayString = json.split("\"");
-        String name = arrayString[7];
-        String address = arrayString[11];
+        String address = arrayString[7];
+        String name = arrayString[11];
 
         holder.tvUserFullName.setText(name);
         holder.tvUserAddress.setText(address);

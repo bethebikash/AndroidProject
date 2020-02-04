@@ -32,6 +32,9 @@ public class BookingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
 
+        getSupportActionBar().setTitle("Service Book");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         etProblem = findViewById(R.id.etProblem);
         etDate = findViewById(R.id.etDate);
         etTime = findViewById(R.id.etTime);
@@ -167,10 +170,17 @@ public class BookingActivity extends AppCompatActivity {
         if (bookingBLL.booking(Url.token, booking)) {
             Toast.makeText(this, "Booking Successful.", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(BookingActivity.this, MainActivity.class);
+            intent.putExtra("from", "Booking");
             startActivity(intent);
         } else {
             Toast.makeText(this, "Booking Failed.", Toast.LENGTH_SHORT).show();
 
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 }
