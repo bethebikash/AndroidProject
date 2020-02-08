@@ -2,6 +2,7 @@ package com.bhattaraibikash.erepair.fragment.main;
 
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +27,7 @@ import com.bhattaraibikash.erepair.api.CategoryApi;
 import com.bhattaraibikash.erepair.api.ServiceApi;
 import com.bhattaraibikash.erepair.models.Category;
 import com.bhattaraibikash.erepair.models.Service;
+import com.bhattaraibikash.erepair.sensors.ShakeEventManager;
 import com.bhattaraibikash.erepair.url.Url;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
@@ -40,11 +43,12 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements ShakeEventManager.ShakeListener{
 
     private SliderView sliderView;
     private RecyclerView rvCategory;
     private RecyclerView rvAllService;
+    private ShakeEventManager sd;
 
 
     public HomeFragment() {
@@ -60,6 +64,11 @@ public class HomeFragment extends Fragment {
 
         // Slider
         sliderView = view.findViewById(R.id.imageSlider);
+
+
+        sd = new ShakeEventManager();
+        sd.setListener(this);
+        sd.init(getContext());
 
         final SliderAdapter adapter = new SliderAdapter(getContext());
         adapter.setCount(5);
@@ -82,7 +91,16 @@ public class HomeFragment extends Fragment {
 
         // Category Recycler view
         rvCategory = view.findViewById(R.id.rvCategory);
+        loadCategories();
 
+        // Service Recycler view
+        rvAllService = view.findViewById(R.id.rvAllService);
+        loadServices();
+
+        return (view);
+    }
+
+    private void loadCategories() {
         CategoryApi categoryApi = Url.getInstance().create(CategoryApi.class);
 
         Call<List<Category>> listCall = categoryApi.getCategories();
@@ -101,10 +119,9 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getActivity(), "failed:" + t, Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
-//         Service Recycler view
-        rvAllService = view.findViewById(R.id.rvAllService);
-
+    private void loadServices(){
         ServiceApi serviceApi = Url.getInstance().create(ServiceApi.class);
 
         Call<List<Service>> callService = serviceApi.getServices();
@@ -124,8 +141,6 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getActivity(), "failed:" + t, Toast.LENGTH_SHORT).show();
             }
         });
-
-        return (view);
     }
 
 
@@ -151,5 +166,30 @@ public class HomeFragment extends Fragment {
         }
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onShake() {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        if (Build.VERSION.SDK_INT >= 26) {
+            ft.setReorderingAllowed(false);
+        }
+        ft.detach(this).attach(this).commit();
+
+        Toast.makeText(getActivity(), "Data Refreshed", Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        sd.register();
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        sd.deregister();
     }
 }
