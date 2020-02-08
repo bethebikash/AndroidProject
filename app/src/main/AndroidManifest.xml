@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bhattaraibikash.erepair">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -18,7 +19,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="q">
-        <activity android:name=".activities.booking.ReviewActivity"></activity>
+        <activity android:name=".activities.booking.ReviewActivity" />
         <activity android:name=".activities.search.SearchActivity" />
         <activity android:name=".activities.booking.BookingActivity" />
         <activity android:name=".activities.service.ServiceDetailActivity" />

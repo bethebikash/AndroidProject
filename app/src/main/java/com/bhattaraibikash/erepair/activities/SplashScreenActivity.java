@@ -16,7 +16,7 @@ import com.bhattaraibikash.erepair.strictmode.StrictModeClass;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    BroadcastReceiverClass broadcastReceiverClass = new BroadcastReceiverClass();
+    BroadcastReceiverClass broadcastReceiverClass = new BroadcastReceiverClass(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

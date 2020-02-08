@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.bhattaraibikash.erepair.R;
+import com.bhattaraibikash.erepair.activities.LoginActivity;
 import com.bhattaraibikash.erepair.activities.profile.ChangePasswordActivity;
 import com.bhattaraibikash.erepair.activities.profile.EditProfileActivity;
 import com.bhattaraibikash.erepair.api.UserApi;
@@ -37,6 +39,7 @@ public class ProfileFragment extends Fragment {
     private TextView tvPhoneProfile;
     private TextView tvAddressProfile;
     private String imagePath;
+    private Button btnLogout;
 
 
     public ProfileFragment() {
@@ -57,6 +60,7 @@ public class ProfileFragment extends Fragment {
         tvAddressProfile = view.findViewById(R.id.tvAddressProfile);
         ivBtnEditProfile = view.findViewById(R.id.ivBtnEditProfile);
         ivBtnChangePassword = view.findViewById(R.id.ivBtnChangePassword);
+        btnLogout = view.findViewById(R.id.btnLogout);
 
         loadProfile();
 
@@ -86,6 +90,16 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ChangePasswordActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Url.token = "";
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                getActivity().finish();
             }
         });
         return view;
