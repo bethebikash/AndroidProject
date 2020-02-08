@@ -2,6 +2,7 @@ package com.bhattaraibikash.erepair.fragment.main;
 
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -168,6 +170,12 @@ public class HomeFragment extends Fragment implements ShakeEventManager.ShakeLis
 
     @Override
     public void onShake() {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        if (Build.VERSION.SDK_INT >= 26) {
+            ft.setReorderingAllowed(false);
+        }
+        ft.detach(this).attach(this).commit();
+
         Toast.makeText(getActivity(), "Data Refreshed", Toast.LENGTH_SHORT).show();
     }
 

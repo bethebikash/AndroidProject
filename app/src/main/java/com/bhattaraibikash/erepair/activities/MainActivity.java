@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.bhattaraibikash.erepair.R;
-import com.bhattaraibikash.erepair.activities.info.AboutActivity;
+import com.bhattaraibikash.erepair.activities.info.ContactInfoActivity;
 import com.bhattaraibikash.erepair.fragment.main.HomeFragment;
 import com.bhattaraibikash.erepair.fragment.main.InfoFragment;
 import com.bhattaraibikash.erepair.fragment.main.MyBookingFragment;
@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         SensorEventListener sel = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-                if(event.values[0] <= 4){
-                    Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                if(event.values[0] <= 2){
+                    Intent intent = new Intent(MainActivity.this, ContactInfoActivity.class);
                     startActivity(intent);
                 }
             }
