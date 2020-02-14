@@ -29,7 +29,7 @@ public class LoginInstrumentedTest {
     @Test
     public void checkUserLogin() {
         onView(withId(R.id.etUsername)).perform(typeText("username"), closeSoftKeyboard());
-        onView(withId(R.id.etPassword)).perform(typeText("admin123"), closeSoftKeyboard());
+        onView(withId(R.id.etPassword)).perform(typeText("Admin123"), closeSoftKeyboard());
         onView(withId(R.id.btnLogin)).perform(click());
 
         onView(withId(R.id.frameContainer)).check(matches(isDisplayed()));

@@ -20,7 +20,7 @@ public class TokenTest {
     public void testToken() {
 
         UserApi userApi = Url.getInstance().create(UserApi.class);
-        Call<LoginResponse> usersCall = userApi.userLogin("username", "admin123");
+        Call<LoginResponse> usersCall = userApi.userLogin("username", "Admin123");
 
         try {
             Response<LoginResponse> loginResponse = usersCall.execute();

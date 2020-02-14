@@ -23,9 +23,9 @@ public class RequestInstrumentedTest {
     @Test
     public void checkBecomeProfessional() {
         onView(withId(R.id.etNamePro)).perform(typeText("Milan Dhakal"), closeSoftKeyboard());
-        onView(withId(R.id.etEmailPro)).perform(typeText("milan@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.etEmailPro)).perform(typeText("milanthhbapaaa@gmail.com"), closeSoftKeyboard());
         onView(withId(R.id.etAddressPro)).perform(typeText("Jorpati"), closeSoftKeyboard());
-        onView(withId(R.id.etPhonePro)).perform(typeText("9045414147"), closeSoftKeyboard());
+        onView(withId(R.id.etPhonePro)).perform(typeText("9045414149"), closeSoftKeyboard());
         onView(withId(R.id.etSkillPro)).perform(typeText("Car Repair, Bike Repair"), closeSoftKeyboard());
         onView(withId(R.id.btnRequest)).perform(click());
 

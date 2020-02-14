@@ -10,7 +10,7 @@ import static junit.framework.TestCase.assertEquals;
 public class ProRequestTest {
     @Test
     public void testProRequest(){
-        Request request = new Request("Ramesh Thapa", "ramesh@test.com", "Koteshwor, Kathmandu", "9849940000", "Skill1, Skill2");
+        Request request = new Request("Ramesh Thapa", "ramesh@teeddrfhgtfg.com", "Koteshwor, Kathmandu", "9849940000", "Skill1, Skill2");
         RequestBLL requestBLL = new RequestBLL();
         boolean result = requestBLL.sendRequest(request);
         assertEquals(true, result);

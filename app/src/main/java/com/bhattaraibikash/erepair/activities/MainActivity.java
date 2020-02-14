@@ -1,10 +1,12 @@
 package com.bhattaraibikash.erepair.activities;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -16,6 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.bhattaraibikash.erepair.R;
 import com.bhattaraibikash.erepair.activities.info.ContactInfoActivity;
+import com.bhattaraibikash.erepair.broadcast.BroadcastReceiverClass;
 import com.bhattaraibikash.erepair.fragment.main.HomeFragment;
 import com.bhattaraibikash.erepair.fragment.main.InfoFragment;
 import com.bhattaraibikash.erepair.fragment.main.MyBookingFragment;
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String from;
     private SensorManager sensorManager;
+    BroadcastReceiverClass broadcastReceiverClass = new BroadcastReceiverClass(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         SensorEventListener sel = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-                if(event.values[0] <= 2){
+                if(event.values[0] <= 1){
                     Intent intent = new Intent(MainActivity.this, ContactInfoActivity.class);
                     startActivity(intent);
                 }
@@ -125,5 +129,20 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getBaseContext(), "Tap again to quit eRepair", Toast.LENGTH_SHORT).show();
         }
         mBackPressed = System.currentTimeMillis();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(broadcastReceiverClass, intentFilter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        unregisterReceiver(broadcastReceiverClass);
     }
 }

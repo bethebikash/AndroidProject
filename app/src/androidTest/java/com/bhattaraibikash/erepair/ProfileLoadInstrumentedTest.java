@@ -30,13 +30,13 @@ public class ProfileLoadInstrumentedTest {
     public void ProfileFragment(){
         testRule.getActivity().getSupportFragmentManager().beginTransaction();
 
-        Url.token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTEwODFkM2JmMGViYTEzMTUwZjMzMGMiLCJpYXQiOjE1ODA0OTIxNzgsImV4cCI6MTU4MDUyODE3OH0.IQP7R7EZOzeEVzfKefsgjE-AaiBrgQ8afq09Q_Y6E-Q";
+        Url.token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTQ2ZjcwNGY2NTJhNTM2NjY4Mjk4N2MiLCJpYXQiOjE1ODE3MTI3Mjd9.0FAp7WjVM89nwKipQxzqZ-D5sGh4i_KB_t08nT2FoGE";
     }
 
     @Test
     public void checkUserProfileLoad() {
         onView(withId(R.id.navProfile)).perform(click());
 
-        onView(withId(R.id.tvUsernameProfile)).check(matches(withText("bethebikash")));
+        onView(withId(R.id.tvUsernameProfile)).check(matches(withText("username")));
     }
 }

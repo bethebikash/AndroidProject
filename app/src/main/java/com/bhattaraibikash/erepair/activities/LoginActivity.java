@@ -82,4 +82,5 @@ public class LoginActivity extends AppCompatActivity {
             etUsername.requestFocus();
         }
     }
+
 }

@@ -29,11 +29,11 @@ public class SignUpInstrumentedTest {
     @Test
     public void checkUserLogin() {
         onView(withId(R.id.etName)).perform(typeText("Bikash Test"), closeSoftKeyboard());
-        onView(withId(R.id.etEmail)).perform(typeText("test@bikash.com"), closeSoftKeyboard());
+        onView(withId(R.id.etEmail)).perform(typeText("test122@testing.com"), closeSoftKeyboard());
         onView(withId(R.id.etAddress)).perform(typeText("Test Address"), closeSoftKeyboard());
-        onView(withId(R.id.etPhone)).perform(typeText("9854541258"), closeSoftKeyboard());
-        onView(withId(R.id.etUsernameReg)).perform(typeText("username22"), closeSoftKeyboard());
-        onView(withId(R.id.etPasswordReg)).perform(typeText("admin123"), closeSoftKeyboard());
+        onView(withId(R.id.etPhone)).perform(typeText("9854541241"), closeSoftKeyboard());
+        onView(withId(R.id.etUsernameReg)).perform(typeText("usertest11555"), closeSoftKeyboard());
+        onView(withId(R.id.etPasswordReg)).perform(typeText("Admin123"), closeSoftKeyboard());
         onView(withId(R.id.btnSighUp)).perform(click());
 
         onView(withId(R.id.btnLogin)).check(matches(isDisplayed()));

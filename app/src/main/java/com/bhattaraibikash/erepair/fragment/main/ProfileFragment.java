@@ -2,6 +2,7 @@ package com.bhattaraibikash.erepair.fragment.main;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,8 @@ import com.bumptech.glide.Glide;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -97,6 +100,12 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Url.token = "";
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("User", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                editor.putString("username", "");
+                editor.putString("password", "");
+                editor.apply();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
                 getActivity().finish();
