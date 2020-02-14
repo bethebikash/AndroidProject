@@ -110,26 +110,6 @@ public class RegisterActivity extends AppCompatActivity {
         String username = etUsernameReg.getText().toString();
         String password = etPasswordReg.getText().toString();
 
-//        User user = new User(name, email, address, phone, username, password);
-//
-//        UserApi userApi = Url.getInstance().create(UserApi.class);
-//        Call<UserResponse> userResponseCall = userApi.userRegister(user);
-//
-//        //Synchronous method
-//        StrictModeClass.StrictMode();
-//
-//        try {
-//            Response<UserResponse> userResponse = userResponseCall.execute();
-//            Toast.makeText(this, "Register Successful", Toast.LENGTH_SHORT).show();
-//            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-//            startActivity(intent);
-//            finish();
-//        } catch (IOException e) {
-//            Toast.makeText(this, "Error" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-//            e.printStackTrace();
-//        }
-
-
         User user = new User(name, email, address, phone, username, password);
 
         SignUpBLL signUpBLL = new SignUpBLL();

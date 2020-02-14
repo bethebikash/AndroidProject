@@ -14,7 +14,7 @@ import retrofit2.http.Query;
 
 public interface ReviewApi {
 
-    @GET("reviews-service")
+    @GET("reviews")
     Call<List<ReviewResponse>> getReview(@Query("service") String _id);
 
     @FormUrlEncoded

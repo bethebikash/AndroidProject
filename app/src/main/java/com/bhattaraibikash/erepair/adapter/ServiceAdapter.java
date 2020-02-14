@@ -47,12 +47,6 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
                 .into(holder.ivService);
         holder.tvServiceName.setText(service.getTitle());
 
-//        Gson gson = new Gson();
-//        String json = gson.toJson(service.getCategory()); //convert
-
-//        String[] arrayString = json.split("\"");
-//        String data = arrayString[7];
-
         holder.tvCatNameS.setText("Rs. "+service.getPrice());
 
         holder.cardService.setOnClickListener(new View.OnClickListener() {

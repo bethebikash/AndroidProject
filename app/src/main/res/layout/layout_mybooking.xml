@@ -94,6 +94,16 @@
                 android:text="review"
                 android:textColor="@color/whiteTextColor"
                 android:background="@drawable/outlined_button"/>
+
+            <Button
+                android:id="@+id/btnCancelBook"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_height="30dp"
+                android:text="Cancel"
+                android:textColor="@color/whiteTextColor"
+                android:background="@drawable/red_btn"/>
+
         </LinearLayout>
     </LinearLayout>
 

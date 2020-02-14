@@ -5,14 +5,10 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -150,23 +146,6 @@ public class HomeFragment extends Fragment implements ShakeEventManager.ShakeLis
         super.onCreate(savedInstanceState);
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.top_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        String msg = "";
-        switch (item.getItemId()){
-            case R.id.menuSearch:
-                msg = "Search Checked";
-                break;
-        }
-        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public void onShake() {

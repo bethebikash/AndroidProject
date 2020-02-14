@@ -16,6 +16,6 @@ public interface ServiceApi {
     @GET("services/{id}")
     Call<Service> getServicesDetail(@Path("id") String _id);
 
-    @GET("services-category")
+    @GET("/services")
     Call<List<Service>> getServicesByCategory(@Query("category") String _id);
 }
