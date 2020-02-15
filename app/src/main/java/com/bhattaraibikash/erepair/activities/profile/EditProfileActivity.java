@@ -230,6 +230,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     Intent intent = new Intent(EditProfileActivity.this, MainActivity.class);
                     intent.putExtra("from", "EditProfile");
                     startActivity(intent);
+                    finish();
                 }
             }
 

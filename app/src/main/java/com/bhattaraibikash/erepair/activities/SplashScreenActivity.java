@@ -1,7 +1,9 @@
 package com.bhattaraibikash.erepair.activities;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -9,9 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bhattaraibikash.erepair.R;
 import com.bhattaraibikash.erepair.bll.LoginBLL;
+import com.bhattaraibikash.erepair.broadcast.BroadcastReceiverClass;
 import com.bhattaraibikash.erepair.strictmode.StrictModeClass;
 
 public class SplashScreenActivity extends AppCompatActivity {
+    BroadcastReceiverClass broadcastReceiverClass = new BroadcastReceiverClass(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,5 +47,20 @@ public class SplashScreenActivity extends AppCompatActivity {
                 }
             }
         }, 2000);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(broadcastReceiverClass, intentFilter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        unregisterReceiver(broadcastReceiverClass);
     }
 }

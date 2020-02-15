@@ -105,7 +105,7 @@ public class ProfessionalActivity extends AppCompatActivity {
             ProfessionalRequestNotification("Professional Request", "Your request to become a professional has been send.");
             finish();
         } else {
-            Toast.makeText(this, "Booking Failed.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Failed.", Toast.LENGTH_SHORT).show();
 
         }
     }

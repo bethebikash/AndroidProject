@@ -187,6 +187,7 @@ public class BookingActivity extends AppCompatActivity {
             Intent intent = new Intent(BookingActivity.this, MainActivity.class);
             intent.putExtra("from", "Booking");
             startActivity(intent);
+            finish();
         } else {
             Toast.makeText(this, "Booking Failed.", Toast.LENGTH_SHORT).show();
 
